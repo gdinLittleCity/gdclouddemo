@@ -1,17 +1,13 @@
 package com.littlecity.cloud.user.dto;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
+public class UserDTO extends User {
 
-  private Integer id;
+  private String verifyCode;
 
-  private String name;
-
-  private String password;
 
 }

@@ -1,5 +1,6 @@
 package com.littlecity.cloud.user.controller;
 
+import com.littlecity.cloud.user.dto.User;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,6 +13,14 @@ public class UserController {
 		@GetMapping
 		public String hello(){
 				return "hello";
+		}
+
+
+		@PostMapping("login")
+		public String login(@RequestParam User user){
+
+
+			return "";
 		}
 
 }

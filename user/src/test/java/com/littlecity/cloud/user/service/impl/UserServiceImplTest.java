@@ -1,5 +1,6 @@
 package com.littlecity.cloud.user.service.impl;
 
+import com.littlecity.cloud.user.dto.ResultDTO;
 import com.littlecity.cloud.user.dto.User;
 import com.littlecity.cloud.user.service.UserService;
 import org.junit.Test;
@@ -24,5 +25,28 @@ public class UserServiceImplTest {
     List<User> userList = userService.getUser();
 
     System.out.println(userList);
+  }
+
+  @Test
+  public void create() {
+    User user = new User();
+    user.setName("test_user");
+    user.setPassword("123456");
+
+    ResultDTO resultDTO = userService.create(user);
+
+    System.out.println(resultDTO);
+
+  }
+
+  @Test
+  public void lgoin() {
+    User user = new User();
+    user.setName("test_user");
+    user.setPassword("123456");
+
+    ResultDTO resultDTO = userService.login(user);
+
+    System.out.println(resultDTO);
   }
 }
