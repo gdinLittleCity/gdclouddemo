@@ -25,4 +25,9 @@ hs_err_pid*
 
 .idea
 
-
+.DS_Store
+app-ui/node_modules/
+app-ui/dist/
+app-ui/npm-debug.log
+app-ui/.vscode
+app-ui/build/
