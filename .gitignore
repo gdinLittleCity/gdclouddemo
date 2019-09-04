@@ -31,3 +31,4 @@ app-ui/dist/
 app-ui/npm-debug.log
 app-ui/.vscode
 app-ui/build/
+app-ui/package-lock.json
