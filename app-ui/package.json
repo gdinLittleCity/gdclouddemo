@@ -1,14 +1,12 @@
 {
   "name": "vue-demo-sale-platform",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "a demo sale platform use vue2.0",
-  "author": "fishenal <yu_dong_han@hotmail.com>",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
     "build": "node build/build.js"
   },
-  "repository": "https://github.com/fishenal/Vuejs-SalePlatform",
   "dependencies": {
     "axios": "^0.17.1",
     "better-scroll": "^1.5.5",
@@ -63,9 +61,5 @@
     "webpack-dev-middleware": "^1.8.3",
     "webpack-hot-middleware": "^2.12.2",
     "webpack-merge": "^0.14.1"
-  },
-  "engines": {
-    "node": ">= 4.0.0",
-    "npm": ">= 3.0.0"
   }
 }
