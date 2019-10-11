@@ -1,7 +1,8 @@
 package com.littlecity.cloud.user.service.impl;
 
 import com.littlecity.cloud.user.dto.ResultDTO;
-import com.littlecity.cloud.user.dto.User;
+import com.littlecity.cloud.user.dto.UserDTO;
+import com.littlecity.cloud.user.entity.UserEntity;
 import com.littlecity.cloud.user.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,29 +12,27 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserServiceImplTest {
+public class UserEntityServiceImplTest {
 
   @Autowired
   UserService userService;
 
   @Test
   public void getUser() {
-    List<User> userList = userService.getUser();
+    List<UserEntity> userEntityList = userService.getUser();
 
-    System.out.println(userList);
+    System.out.println(userEntityList);
   }
 
   @Test
   public void create() {
-    User user = new User();
-    user.setName("test_user");
-    user.setPassword("123456");
+    UserDTO userEntity = new UserDTO();
+    userEntity.setName("test_user");
+    userEntity.setPassword("123456");
 
-    ResultDTO resultDTO = userService.create(user);
+    ResultDTO resultDTO = userService.create(userEntity);
 
     System.out.println(resultDTO);
 
@@ -41,11 +40,11 @@ public class UserServiceImplTest {
 
   @Test
   public void lgoin() {
-    User user = new User();
-    user.setName("test_user");
-    user.setPassword("123456");
+    UserDTO userEntity = new UserDTO();
+    userEntity.setName("test_user");
+    userEntity.setPassword("123456");
 
-    ResultDTO resultDTO = userService.login(user);
+    ResultDTO resultDTO = userService.login(userEntity);
 
     System.out.println(resultDTO);
   }

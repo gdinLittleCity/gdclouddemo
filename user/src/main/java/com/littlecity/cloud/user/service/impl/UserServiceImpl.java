@@ -3,10 +3,12 @@ package com.littlecity.cloud.user.service.impl;
 import com.littlecity.cloud.user.ResponseCode;
 import com.littlecity.cloud.user.dao.UserDao;
 import com.littlecity.cloud.user.dto.ResultDTO;
-import com.littlecity.cloud.user.dto.User;
+import com.littlecity.cloud.user.dto.UserDTO;
+import com.littlecity.cloud.user.entity.UserEntity;
 import com.littlecity.cloud.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -23,19 +25,19 @@ public class UserServiceImpl implements UserService {
   UserDao userDao;
 
   @Override
-  public List<User> getUser() {
-    return userDao.getUser();
+  public List<UserEntity> getUser() {
+    return userDao.findAll();
   }
 
   @Override
-  public ResultDTO create(@NotNull User user) {
-    ResponseCode checkResult = checkParam(user);
-    if (checkParam(user).getCode() != 0){
+  public ResultDTO create(@NotNull UserDTO userEntity) {
+    ResponseCode checkResult = checkParam(userEntity);
+    if (checkParam(userEntity).getCode() != 0){
       return buildResultDto(checkResult, null);
     }
     try{
-      user.setPassword(genPassword(user.getPassword()));
-      userDao.insertUser(user);
+      userEntity.setPassword(genPassword(userEntity.getPassword()));
+      userDao.save(userEntity);
       return buildResultDto(ResponseCode.SUCCESS, null);
     } catch ( Exception ex){
       return buildResultDto(ResponseCode.SYSTEM_ERROR, null);
@@ -43,18 +45,21 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public ResultDTO login(@NotNull User user) {
-    ResponseCode checkResult = checkParam(user);
+  public ResultDTO login(@NotNull UserDTO userEntity) {
+    ResponseCode checkResult = checkParam(userEntity);
     log.info("check result:{}", checkResult);
-    if (checkParam(user).getCode() != 0){
+    if (checkParam(userEntity).getCode() != 0){
       return buildResultDto(checkResult, null);
     }
     try {
-      List<User> userList = userDao.getUserByUserName(user.getName(),genPassword(user.getPassword()));
-      log.info("query result:{}", userList);
-      if (!CollectionUtils.isEmpty(userList) && userList.size() == 1){
+      List<UserEntity> userEntityList = userDao.findByNameAndPassword(userEntity.getName(),genPassword(userEntity.getPassword()));
+      log.info("query result:{}", userEntityList);
+      if (!CollectionUtils.isEmpty(userEntityList) && userEntityList.size() == 1){
         return buildResultDto(ResponseCode.SUCCESS, null);
       }
+
+
+
       return buildResultDto(ResponseCode.SYSTEM_ERROR, null);
     } catch ( Exception ex){
 
@@ -75,11 +80,11 @@ public class UserServiceImpl implements UserService {
             .build();
   }
 
-  private ResponseCode checkParam(User user){
-    if (StringUtils.isEmpty(user.getName())){
+  private ResponseCode checkParam(UserEntity userEntity){
+    if (StringUtils.isEmpty(userEntity.getName())){
       return ResponseCode.USER_LOGIN_NAME_EMPTY;
     }
-    if (StringUtils.isEmpty(user.getPassword())){
+    if (StringUtils.isEmpty(userEntity.getPassword())){
       return ResponseCode.USER_LOGIN_PASSWORD_EMPTY;
     }
     return ResponseCode.SUCCESS;
