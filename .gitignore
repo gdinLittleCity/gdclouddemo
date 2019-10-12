@@ -18,6 +18,7 @@
 *.zip
 *.tar.gz
 *.rar
+*.class
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
@@ -32,3 +33,4 @@ app-ui/npm-debug.log
 app-ui/.vscode
 app-ui/build/
 app-ui/package-lock.json
+*/target
