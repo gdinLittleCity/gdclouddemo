@@ -23,8 +23,8 @@
                 </a>
                 <span class="navbar-cart-count">{{totalNum}}</span>
                 <!--购物车显示块-->
-                <div class="nav-user-wrapper pa active" v-show="showCart">
-                  <div class="nav-user-list">
+                <div class="nav-userEntity-wrapper pa active" v-show="showCart">
+                  <div class="nav-userEntity-list">
                     <div class="full" v-show="isFull">
                       <!--购物列表-->
                       <div class="nav-cart-items">
@@ -320,7 +320,7 @@ export default {
             .navbar-cart-count
               top: 0px;
               right: -20px; 
-            .nav-user-wrapper
+            .nav-userEntity-wrapper
               position:absolute
               top: 18px
               right:-35px
@@ -330,7 +330,7 @@ export default {
               opacity: 1
               transition: opacity .15s ease-out
               z-index:99
-              .nav-user-list
+              .nav-userEntity-list
                 position: relative;
                 background: #fff;
                 border: 1px solid #d6d6d6;
@@ -474,7 +474,7 @@ export default {
                         display: inline-block
                         cursor: pointer
                         text-align: center
-                        user-select: none
+                        userEntity-select: none
                         display: inline-block
                         width: 100%
                         height: 100%

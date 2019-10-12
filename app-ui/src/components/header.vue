@@ -22,32 +22,32 @@
             <div class="navbar-menu-container">
               <span class="navbar-link"></span>
               <div v-on:mouseover="userShow" v-on:mouseout="userHidden">
-                <a class="navbar-link navbar-user" @click="loginModal"></a>
-                <div class="nav-user-info pa" v-show="infoShow && ifLogin">
+                <a class="navbar-link navbar-userEntity" @click="loginModal"></a>
+                <div class="nav-userEntity-info pa" v-show="infoShow && ifLogin">
                   <div class="nav-info-list">
                     <ul>
-                      <li class="nav-user-avatar">
+                      <li class="nav-userEntity-avatar">
                         <div>
-                          <img class="avatar" src="../../static/images/user-avatar.png">
+                          <img class="avatar" src="../../static/images/userEntity-avatar.png">
                         </div>
                         <p class="name">{{myName}}</p>
                       </li>
-                      <li class="user-li-style">
+                      <li class="userEntity-li-style">
                         <router-link to="/orderlist">我的订单</router-link>
                       </li>
-                      <li class="user-li-style">
-                        <router-link to="/user/information">账号资料</router-link>
+                      <li class="userEntity-li-style">
+                        <router-link to="/userEntity/information">账号资料</router-link>
                       </li>
-                      <li class="user-li-style">
+                      <li class="userEntity-li-style">
                         <router-link to="/addresslist">收货地址</router-link>
                       </li>
-                      <!-- <li class="user-li-style">
-                        <router-link to="/user/support">售后服务</router-link>
+                      <!-- <li class="userEntity-li-style">
+                        <router-link to="/userEntity/support">售后服务</router-link>
                       </li> -->
-                      <li class="user-li-style">
-                        <router-link to="/user/coupon">我的优惠</router-link>
+                      <li class="userEntity-li-style">
+                        <router-link to="/userEntity/coupon">我的优惠</router-link>
                       </li>
-                      <li class="user-li-style">
+                      <li class="userEntity-li-style">
                         <a href="javascript:;" @click="logout">退出</a>
                       </li>
                     </ul>
@@ -60,8 +60,8 @@
                 </router-link>
                 <span class="navbar-cart-count">{{cartCount}}</span>
                 <!--购物车显示块-->
-                <div class="nav-user-wrapper pa active" v-show="showCart">
-                  <div class="nav-user-list">
+                <div class="nav-userEntity-wrapper pa active" v-show="showCart">
+                  <div class="nav-userEntity-list">
                     <div class="full" v-show="haveLen">
                       <!--购物列表-->
                       <div class="nav-cart-items">
@@ -442,7 +442,7 @@ export default {
         				transition:all 0.3s
         .navbar-right-container
           position:relative
-          .navbar-user
+          .navbar-userEntity
             &:before
               content:''
               position: absolute
@@ -454,7 +454,7 @@ export default {
               background: url('../../static/images/icon.png') -155px 0
               background-size: 240px 107px
               transition: none
-          .nav-user-info
+          .nav-userEntity-info
             position: absolute
             z-index: 30
             padding-top: 18px
@@ -483,7 +483,7 @@ export default {
                 top: -8px
                 left: 50%
                 transform: translateX(-50%)
-              .nav-user-avatar
+              .nav-userEntity-avatar
                 div 
                   position: relative
                   margin: 0 auto 8px
@@ -509,7 +509,7 @@ export default {
                   line-height: 1.5
                   text-align: center
                   color: #757575
-              .user-li-style
+              .userEntity-li-style
                 text-align: center
                 position: relative
                 border-top: 1px solid #f5f5f5
@@ -540,7 +540,7 @@ export default {
             .navbar-cart-count
               top: 0px;
               right: -20px; 
-            .nav-user-wrapper
+            .nav-userEntity-wrapper
               position:absolute
               top: 18px
               right:-30px
@@ -550,7 +550,7 @@ export default {
               opacity: 1
               transition: opacity .15s ease-out
               z-index:99
-              .nav-user-list
+              .nav-userEntity-list
                 position: relative;
                 background: #fff;
                 border: 1px solid #d6d6d6;
@@ -694,7 +694,7 @@ export default {
                         display: inline-block
                         cursor: pointer
                         text-align: center
-                        user-select: none
+                        userEntity-select: none
                         display: inline-block
                         width: 100%
                         height: 100%

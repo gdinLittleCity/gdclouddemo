@@ -8,7 +8,7 @@
 }
 
 html {
-  font-family:sans-serif,"\5FAE\8F6F\96C5\9ED1",arial;
+  font-family: sans-serif, "\5FAE\8F6F\96C5\9ED1", arial;
   font-size: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -395,6 +395,7 @@ table {
     font-size: 3rem;
   }
 }
+
 html {
   font-size: 10px;
 }
@@ -435,11 +436,11 @@ a:hover {
   background: #f0f0f0;
 }
 
-
 /** 面包屑 **/
-.nav-breadcrumb-wrap .container{
-  padding-top:70px;
+.nav-breadcrumb-wrap .container {
+  padding-top: 70px;
 }
+
 .nav-breadcrumb {
   padding: 10px 0;
   line-height: 25px;
@@ -885,11 +886,9 @@ html {
   box-sizing: inherit;
 }
 
-
 .header {
   position: relative;
 }
-
 
 .footer {
   background-color: #f5f7fc;
@@ -1249,7 +1248,6 @@ html {
   /*.md-modal .md-close {
     display: none;
   }*/
-
   .md-modal .md-tit {
     padding: 0 15px;
   }
@@ -1280,8 +1278,9 @@ html {
     -ms-flex: 1;
     flex: 1;
   }
+
   .md-modal .btn-wrap {
-    padding:0 0 20px 0;
+    padding: 0 0 20px 0;
   }
 
   /*.md-modal .btn-wrap {
@@ -1302,12 +1301,10 @@ html {
     margin: 0;
     font-size: 12px;
   }*/
-
   /*.md-modal .btn-wrap .btn:first-child {
     border-left: none;
     border-right: none;
   }*/
-
   .md-modal.modal-normal .content-tit {
     font-size: 12px;
   }

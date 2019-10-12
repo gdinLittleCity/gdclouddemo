@@ -169,7 +169,7 @@
       line-height: 40px;
       text-indent: -9999em;
       cursor: pointer;
-      user-select: none;
+      userEntity-select: none;
     }
     .num {
       position: relative;

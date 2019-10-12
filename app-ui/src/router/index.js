@@ -8,6 +8,7 @@ import OrderConfirm from '../page/OrderConfirm'
 import OrderSuccess from '../page/OrderSuccess'
 import OrderList from '../page/OrderList.vue'
 import GoodsDetails from '../page/GoodsDetails'
+
 Vue.use(Router)
 
 export default new Router({

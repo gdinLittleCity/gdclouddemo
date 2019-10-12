@@ -8,9 +8,10 @@ import vueResource from 'vue-resource'
 import vueLazyLoad from 'vue-lazyload'
 import infiniteScroll from 'vue-infinite-scroll'
 import Base64 from 'js-base64'
+
 Vue.use(vueResource)
-Vue.use(vueLazyLoad,{
-	loading:"./static/loading-svg/loading-bars.svg"  // 设置图片懒加载
+Vue.use(vueLazyLoad, {
+  loading: "./static/loading-svg/loading-bars.svg"  // 设置图片懒加载
 })
 Vue.use(infiniteScroll)
 Vue.use(Base64)
@@ -21,5 +22,5 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App }
+  components: {App}
 })

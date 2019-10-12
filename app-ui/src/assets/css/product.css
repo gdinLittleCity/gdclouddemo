@@ -518,9 +518,11 @@
 .accessory-classify {
   position: relative;
 }
-.accessory-result-page{
+
+.accessory-result-page {
   overflow: hidden;
 }
+
 .accessory-result-page .view-more-normal {
   height: 120px;
   margin-top: 40px;
@@ -581,8 +583,9 @@
     padding-top: 20px;
   }
 }
-@media only screen and (max-width: 1080px){
-  .guide-content{
+
+@media only screen and (max-width: 1080px) {
+  .guide-content {
     background: none;
   }
 }
