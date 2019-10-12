@@ -2,6 +2,7 @@ package com.littlecity.cloud.user.controller;
 
 import com.littlecity.cloud.user.dto.UserDTO;
 import com.littlecity.cloud.user.entity.UserEntity;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,21 @@ public class UserController {
 
         return product;
     }
+
+    @GetMapping("testHystrix")
+    @HystrixCommand(fallbackMethod = "callProductException")
+    public String testHystrix(String name){
+        String productRes = restTemplate.postForObject("http://product/runException", null, String.class);
+
+        return "call product runException";
+    }
+
+    // 断路器生效时调用
+    public String callProductException(String name){
+
+        return "hystrix call back:"+ name;
+    }
+
+
 
 }
