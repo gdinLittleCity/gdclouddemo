@@ -21,73 +21,72 @@ import java.util.List;
 @Slf4j
 public class UserServiceImpl implements UserService {
 
-  @Autowired
-  UserDao userDao;
+    @Autowired
+    UserDao userDao;
 
-  @Override
-  public List<UserEntity> getUser() {
-    return userDao.findAll();
-  }
-
-  @Override
-  public ResultDTO create(@NotNull UserDTO userEntity) {
-    ResponseCode checkResult = checkParam(userEntity);
-    if (checkParam(userEntity).getCode() != 0){
-      return buildResultDto(checkResult, null);
+    @Override
+    public List<UserEntity> getUser() {
+        return userDao.findAll();
     }
-    try{
-      userEntity.setPassword(genPassword(userEntity.getPassword()));
-      userDao.save(userEntity);
-      return buildResultDto(ResponseCode.SUCCESS, null);
-    } catch ( Exception ex){
-      return buildResultDto(ResponseCode.SYSTEM_ERROR, null);
+
+    @Override
+    public ResultDTO create(@NotNull UserDTO userEntity) {
+        ResponseCode checkResult = checkParam(userEntity);
+        if (checkParam(userEntity).getCode() != 0) {
+            return buildResultDto(checkResult, null);
+        }
+        try {
+            userEntity.setPassword(genPassword(userEntity.getPassword()));
+            userDao.save(userEntity);
+            return buildResultDto(ResponseCode.SUCCESS, null);
+        } catch (Exception ex) {
+            return buildResultDto(ResponseCode.SYSTEM_ERROR, null);
+        }
     }
-  }
 
-  @Override
-  public ResultDTO login(@NotNull UserDTO userEntity) {
-    ResponseCode checkResult = checkParam(userEntity);
-    log.info("check result:{}", checkResult);
-    if (checkParam(userEntity).getCode() != 0){
-      return buildResultDto(checkResult, null);
+    @Override
+    public ResultDTO login(@NotNull UserDTO userEntity) {
+        ResponseCode checkResult = checkParam(userEntity);
+        log.info("check result:{}", checkResult);
+        if (checkParam(userEntity).getCode() != 0) {
+            return buildResultDto(checkResult, null);
+        }
+        try {
+            List<UserEntity> userEntityList = userDao.findByNameAndPassword(userEntity.getName(), genPassword(userEntity.getPassword()));
+            log.info("query result:{}", userEntityList);
+            if (!CollectionUtils.isEmpty(userEntityList) && userEntityList.size() == 1) {
+                return buildResultDto(ResponseCode.SUCCESS, null);
+            }
+
+
+            return buildResultDto(ResponseCode.SYSTEM_ERROR, null);
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+            return buildResultDto(ResponseCode.SYSTEM_ERROR, null);
+        }
     }
-    try {
-      List<UserEntity> userEntityList = userDao.findByNameAndPassword(userEntity.getName(),genPassword(userEntity.getPassword()));
-      log.info("query result:{}", userEntityList);
-      if (!CollectionUtils.isEmpty(userEntityList) && userEntityList.size() == 1){
-        return buildResultDto(ResponseCode.SUCCESS, null);
-      }
 
-
-
-      return buildResultDto(ResponseCode.SYSTEM_ERROR, null);
-    } catch ( Exception ex){
-
-      ex.printStackTrace();
-      return buildResultDto(ResponseCode.SYSTEM_ERROR, null);
+    private String genPassword(String password) {
+        return DigestUtils.md5DigestAsHex(password.getBytes());
     }
-  }
 
-  private String genPassword(String password){
-    return DigestUtils.md5DigestAsHex(password.getBytes());
-  }
-
-  private ResultDTO buildResultDto(ResponseCode responseCode, Object data){
-    return ResultDTO.builder()
-            .code(responseCode.getCode())
-            .msg(responseCode.getMessage())
-            .data(data)
-            .build();
-  }
-
-  private ResponseCode checkParam(UserEntity userEntity){
-    if (StringUtils.isEmpty(userEntity.getName())){
-      return ResponseCode.USER_LOGIN_NAME_EMPTY;
+    private ResultDTO buildResultDto(ResponseCode responseCode, Object data) {
+        return ResultDTO.builder()
+                .code(responseCode.getCode())
+                .msg(responseCode.getMessage())
+                .data(data)
+                .build();
     }
-    if (StringUtils.isEmpty(userEntity.getPassword())){
-      return ResponseCode.USER_LOGIN_PASSWORD_EMPTY;
+
+    private ResponseCode checkParam(UserEntity userEntity) {
+        if (StringUtils.isEmpty(userEntity.getName())) {
+            return ResponseCode.USER_LOGIN_NAME_EMPTY;
+        }
+        if (StringUtils.isEmpty(userEntity.getPassword())) {
+            return ResponseCode.USER_LOGIN_PASSWORD_EMPTY;
+        }
+        return ResponseCode.SUCCESS;
     }
-    return ResponseCode.SUCCESS;
-  }
 
 }

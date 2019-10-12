@@ -7,10 +7,10 @@ import lombok.Data;
 @Builder
 public class ResultDTO {
 
-  private Integer code;
+    private Integer code;
 
-  private String msg;
+    private String msg;
 
-  private Object data;
+    private Object data;
 
 }

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 
-public interface UserDao extends BaseDAO<UserEntity, Integer>{
+public interface UserDao extends BaseDAO<UserEntity, Integer> {
 
-   List<UserEntity> findByNameAndPassword(String name, String password);
+    List<UserEntity> findByNameAndPassword(String name, String password);
 
 }

@@ -23,7 +23,7 @@ public class SystemConfig {
 
     private final SystemConfigService systemConfigService;
 
-    public SystemConfig(SystemConfigService systemConfigService){
+    public SystemConfig(SystemConfigService systemConfigService) {
         this.systemConfigService = systemConfigService;
         List<SystemConfigEntity> allConfig = systemConfigService.getAllConfig();
 
@@ -34,7 +34,7 @@ public class SystemConfig {
     }
 
 
-    public static Object getConfig(String field){
+    public static Object getConfig(String field) {
 
         Object configValue = configCache.get(field);
 

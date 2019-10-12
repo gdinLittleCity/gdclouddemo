@@ -32,7 +32,7 @@ public class UserController {
 
 
     @GetMapping("getRedisValue")
-    public String getRedisValue(){
+    public String getRedisValue() {
         return redisTemplate.opsForValue().get("userRedis_Test");
     }
 

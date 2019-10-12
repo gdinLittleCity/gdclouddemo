@@ -8,7 +8,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDTO extends UserEntity {
 
-  private String verifyCode;
+    private String verifyCode;
 
 
 }

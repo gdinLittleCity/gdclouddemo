@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface UserService {
 
-  List<UserEntity> getUser();
+    List<UserEntity> getUser();
 
-  ResultDTO create(@NotNull UserDTO userEntity);
+    ResultDTO create(@NotNull UserDTO userEntity);
 
-  ResultDTO login(@NotNull UserDTO userEntity);
+    ResultDTO login(@NotNull UserDTO userEntity);
 
 }
