@@ -1,5 +1,5 @@
 server:
-  port: 8762
+  port: 8765
 
 eureka:
   instance:
@@ -12,7 +12,7 @@ eureka:
 
 spring:
   application:
-    name: user
+    name: product
   datasource:
     username: d_dev_rw
     password: Ymn2738#HwqBAo

@@ -7,10 +7,12 @@ server:
 
 zuul:
   routes:
-    user-route:         # �����÷�ʽ�У�user-route ֻ�Ǹ�·��һ�����ƣ���������������
+    user-route:
       service-id: user
-      path: /user/**      # service-id ��Ӧ��·��
-
+      path: /user/**
+    product-route:
+      service-id: product
+      path: /product/**
 
 eureka:
   instance:
