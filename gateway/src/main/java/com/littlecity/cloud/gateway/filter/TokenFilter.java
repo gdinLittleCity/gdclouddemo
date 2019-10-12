@@ -12,31 +12,31 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2019/7/22
  */
 public class TokenFilter extends ZuulFilter {
-		@Override
-		public String filterType() {
-				return "pre";
-		}
+    @Override
+    public String filterType() {
+        return "pre";
+    }
 
-		@Override
-		public int filterOrder() {
-				return 0;
-		}
+    @Override
+    public int filterOrder() {
+        return 0;
+    }
 
-		@Override
-		public boolean shouldFilter() {
-				return true;
-		}
+    @Override
+    public boolean shouldFilter() {
+        return true;
+    }
 
-		@Override
-		public Object run() throws ZuulException {
-				RequestContext currentContext = RequestContext.getCurrentContext();
-				HttpServletRequest request = currentContext.getRequest();
-				String token = request.getHeader("token");
-				if (StringUtils.isEmpty(token) || !"123".equals(token)){
-						currentContext.setSendZuulResponse(false);
-						currentContext.setResponseStatusCode(401);
-						return null;
-				}
-				return null;
-		}
+    @Override
+    public Object run() throws ZuulException {
+        RequestContext currentContext = RequestContext.getCurrentContext();
+        HttpServletRequest request = currentContext.getRequest();
+        String token = request.getHeader("token");
+        if (StringUtils.isEmpty(token) || !"123".equals(token)) {
+            currentContext.setSendZuulResponse(false);
+            currentContext.setResponseStatusCode(401);
+            return null;
+        }
+        return null;
+    }
 }
